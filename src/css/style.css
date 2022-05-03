@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Readex+Pro:wght@300;400;500&family=Roboto&display=swap');
+
+
+/* Base style Start */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Readex Pro', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.fw-5 {
+    font-weight: 500;
+}
+
+.fw-6 {
+    font-weight: 600;
+}
+
+.mfs-1 {
+    font-size: small;
+}
+
+
+.raw-btn {
+    display: inline-block;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: #21C9B6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.raw-btn-outline {
+    background-color: transparent;
+    border: 1px #21C9B6 solid;
+    color: #21C9B6;
+  }
+
+.raw-btn:hover {
+    transform: scale(0.98);
+
+}
+
+
+.my-1 {
+    margin: 1rem 0;
+  }
+  
+  .my-2 {
+    margin: 1.5rem 0;
+  }
+  
+  .my-3 {
+    margin: 2rem 0;
+  }
+  
+  .my-4 {
+    margin: 3rem 0;
+  }
+  
+  .my-5 {
+    margin: 4rem 0;
+  }
