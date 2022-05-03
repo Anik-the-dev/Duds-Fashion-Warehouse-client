@@ -7,9 +7,11 @@ import './css/style.css'
 import Blog from './components/Blog/Blog';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
+import PrimaryMenu from './components/PrimaryMenu/PrimaryMenu'
 function App() {
   return (
     <div className="App">
+      <PrimaryMenu></PrimaryMenu>
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/blog" element={<Blog />} />
