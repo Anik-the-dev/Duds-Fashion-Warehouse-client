@@ -13,30 +13,32 @@ const ManageInventory = () => {
                     <h2 className='text-center my-5 fw-5'>Duds Inventory Items</h2>
                     {/* grid grid-three-col md-flex */}
                     {/* d-md-flex align-items-center justify-content-center */}
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
+                    <div class="table-responsive">
+                        <Table striped bordered hover class="table">
+                            <thead>
+                                <tr>
 
-                                <th>Product Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Supplier</th>
-                                <th>Update</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Supplier</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
 
                                 {
                                     items.map(item => <InventoryTable key={item._id} singleItem={item}></InventoryTable>
                                     )
                                 }
 
-                            
 
-                        </tbody>
-                    </Table>
+
+                            </tbody>
+                        </Table>
+                    </div>
 
 
 

@@ -9,7 +9,7 @@ const InventoryTable = ({ singleItem }) => {
             
             <td>{name}</td>
             <td>{quantity}</td>
-            <td>{price}</td>
+            <td>${price}.0</td>
             <td>{supplierName}</td>
             <td>
                 <Button className="btn btn-primary text-light px-4" style={{ backgroundColor: "#21C9B6" , border:'none'}}>Update</Button>
