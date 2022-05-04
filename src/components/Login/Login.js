@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Card, Col, Container, Form, FormControl, Row } from 'react-bootstrap';
 import login from '../../images/login.jpg'
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
@@ -33,8 +33,10 @@ const Login = () => {
 
     // Redirect to inventory page
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
     if(user){
-        navigate('/inventory')
+        navigate(from, {replace:true})
     }
 
     // handle password reset
