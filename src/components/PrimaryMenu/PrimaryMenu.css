@@ -1,4 +1,4 @@
-.menuitem{
+.menuitem, .signout{
     text-decoration: none;
     color: rgb(30, 30, 30);
     font-weight: 500;
@@ -8,3 +8,4 @@
     transform: scale(.98);
 
 }
+
