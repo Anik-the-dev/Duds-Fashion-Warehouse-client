@@ -35,6 +35,7 @@ const PrimaryMenu = () => {
 
                                     <Nav.Link><Link className='menuitem' to='/'>Home</Link></Nav.Link>
                                     <Nav.Link><Link className='menuitem' to='/blog'>Blog</Link></Nav.Link>
+                                    <Nav.Link><Link className='menuitem' to='/inventory'>Inventory</Link></Nav.Link>
                                     {
                                         user?.uid ?
                                             <Nav.Link className='text-dark' onClick={handleSignOut}>Sign Out</Nav.Link>
