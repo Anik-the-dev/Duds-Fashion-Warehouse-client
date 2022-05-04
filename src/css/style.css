@@ -73,6 +73,10 @@ body {
     margin: 4rem 0;
   }
 
+  .pe-auto{
+    cursor: pointer;
+  }
+
   .autosignin{
     background-color: #fff;
     color: #333;

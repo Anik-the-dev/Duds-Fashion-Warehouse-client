@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 import { Card, Col, Container, Form, FormControl, Row } from 'react-bootstrap';
 import login from '../../images/login.jpg'
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { Toast } from 'react-bootstrap';
 
 const Login = () => {
     // declare the states......
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    const [reset, setReset] = useState(false)
+    const [resetError, setResetError] = useState('')
 
     // destructuring the hook......
     const [
@@ -26,6 +30,25 @@ const Login = () => {
         e.target.reset()
 
     }
+
+    // handle password reset
+    const handlePasswordReset = (e) => {
+        
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                setReset(true)
+                console.log("reset called")
+                // ..
+            })
+            .catch((err)=>{
+                setResetError(err?.message)
+
+            })
+
+    }
+
+
     console.log(user)
     console.log(user?.user)
     console.log(user?.user?.uid)
@@ -59,7 +82,18 @@ const Login = () => {
                             <div className='mt-3 d-flex flex-wrap-reverse align-items-center justify-content-between'>
 
                                 <input type="submit" value="Login" className="btn btn-primary w-50 p-2 " style={{ backgroundColor: "#7161F8" }}></input>
-                                <p className='text-primary pt-3'>Forget Password?</p>
+                                <p onClick={handlePasswordReset} className='text-primary pt-3 pe-auto'>Forget Password?</p>
+                                {
+                                    reset ?
+                                    <Toast onClose={() => setReset(false)} show={reset} delay={7000} autohide>
+                                        <Toast.Header>
+
+                                            <strong className="me-auto">dudsFashion</strong>
+                                            <small>0 mins ago</small>
+                                        </Toast.Header>
+                                        <Toast.Body>Check Your Email and Reset Password.</Toast.Body>
+                                    </Toast> : <p className='mt-2 text-danger fw-6'>{resetError}</p>
+                                }
 
                             </div>
                             <p className='mt-2 text-danger fw-6'>{error?.message}</p>
