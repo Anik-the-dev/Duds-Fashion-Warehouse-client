@@ -16,7 +16,7 @@ const GoogleSignIn = () => {
                 <p className='mt-3'>Sign In with Google</p>
 
             </div>
-            <p className='mt-2 mx-auto fs-6'>If You are new Admin, Go to  <Link className='text-success text-decoration-none fw-6' to='/signup'>Sign Up Page.</Link></p>
+
 
         </>
 
