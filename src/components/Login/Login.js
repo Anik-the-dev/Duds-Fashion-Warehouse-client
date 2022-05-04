@@ -29,7 +29,7 @@ const Login = () => {
     console.log(user)
     console.log(user?.user)
     console.log(user?.user?.uid)
-    console.log(error)
+    console.log("Eroor:",error)
     return (
         <Container>
             <h1 className='mt-5 fw-6 fs-3 text-md-start text-center' style={{ color: "#2F2869" }}>dudsFashion Inventory.</h1>
@@ -56,7 +56,10 @@ const Login = () => {
 
 
                             <input type="submit" value="Login" className="btn btn-primary w-100 p-2 mt-3" style={{ backgroundColor: "#7161F8" }}></input>
+                            <p className='mt-2 text-danger fw-6'>{error?.message}</p>
+
                         </form>
+                        
                         <GoogleSignIn></GoogleSignIn>
                         <p className='mt-2 mx-auto fs-6'>If You are new Admin, Go to  <Link className='text-success text-decoration-none fw-6' to='/signup'>Sign Up Page.</Link></p>
 
