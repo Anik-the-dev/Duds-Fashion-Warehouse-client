@@ -27,8 +27,9 @@ const Signup = () => {
         e.preventDefault()
         createUserWithEmailAndPassword(email, pass).then(() => {
             sendEmailVerification()
-            alert('Verification mail Sent');
+            alert('Verification mail Sent. Check Your Email');
         })
+        e.target.reset()
 
     }
 

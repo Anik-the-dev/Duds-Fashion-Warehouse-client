@@ -23,6 +23,7 @@ const Login = () => {
     const handleLoginForm = (e) => {
         e.preventDefault()
         signInWithEmailAndPassword(email, pass)
+        e.target.reset()
 
     }
     console.log(user)
