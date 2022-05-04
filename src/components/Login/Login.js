@@ -29,11 +29,11 @@ const Login = () => {
     console.log(user)
     console.log(user?.user)
     console.log(user?.user?.uid)
-    console.log("Eroor:",error)
+    console.log("Eroor:", error)
     return (
         <Container>
             <h1 className='mt-5 fw-6 fs-3 text-md-start text-center' style={{ color: "#2F2869" }}>dudsFashion Inventory.</h1>
-            
+
             <Row className='mx-auto my-5 d-flex justify-content-between align-items-center text-center gap-3'>
                 <Col sm='6' className=' text-center'>
                     <div className='login-text my-4'>
@@ -55,11 +55,17 @@ const Login = () => {
                             <FormControl className='mt-3' onBlur={(e) => setPass(e.target.value)} type="password" name="password" placeholder="Password" required />
 
 
-                            <input type="submit" value="Login" className="btn btn-primary w-100 p-2 mt-3" style={{ backgroundColor: "#7161F8" }}></input>
+                            {/* <input type="submit" value="Login" className="btn btn-primary w-50 p-2 mt-3" style={{ backgroundColor: "#7161F8" }}></input> */}
+                            <div className='mt-3 d-flex flex-wrap-reverse align-items-center justify-content-between'>
+
+                                <input type="submit" value="Login" className="btn btn-primary w-50 p-2 " style={{ backgroundColor: "#7161F8" }}></input>
+                                <p className='text-primary pt-3'>Forget Password?</p>
+
+                            </div>
                             <p className='mt-2 text-danger fw-6'>{error?.message}</p>
 
                         </form>
-                        
+
                         <GoogleSignIn></GoogleSignIn>
                         <p className='mt-2 mx-auto fs-6'>If You are new Admin, Go to  <Link className='text-success text-decoration-none fw-6' to='/signup'>Sign Up Page.</Link></p>
 
