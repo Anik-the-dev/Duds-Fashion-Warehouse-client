@@ -5,12 +5,16 @@ import { Link } from 'react-router-dom';
 import signup from '../../images/signup.webp'
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import { Card, Col, Container, Form, FormControl, Row } from 'react-bootstrap';
+// import { useUpdateProfile } from 'react-firebase-hooks/auth';
+import { updateProfile } from "firebase/auth";
 
 const Signup = () => {
     // declare the states......
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    // const [updateProfile, updating] = useUpdateProfile(auth);
+
 
     // destructuring the hook......
     const [
@@ -20,6 +24,24 @@ const Signup = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    // const handleUpdateProfile = async() =>{
+    //     await updateProfile({name})
+    //     console.log("Name Update")
+
+    // }
+
+    const handleUpdateProfile = () => {
+        updateProfile(auth.currentUser, {
+            displayName: name,
+        }).then(() => {
+            console.log("Profile updated!")
+            // ...
+        }).catch((error) => {
+            console.log("Profile Error!", error.message)
+        });
+
+
+    }
     const [sendEmailVerification] = useSendEmailVerification(auth);
 
     // click the sign up btn......
@@ -27,20 +49,23 @@ const Signup = () => {
         e.preventDefault()
         createUserWithEmailAndPassword(email, pass).then(() => {
             sendEmailVerification()
+            handleUpdateProfile();
             alert('Verification mail Sent. Check Your Email');
+
         })
         e.target.reset()
 
+
     }
 
-    console.log(user)
+
+
     console.log(user?.user)
-    console.log(user?.user?.uid)
-    console.log(error)
+
     return (
         <Container>
             <h1 className='mt-5 fw-6 fs-3 text-md-start text-center' style={{ color: "#2F2869" }}>dudsFashion Inventory.</h1>
-            
+
             <Row className='mx-auto my-5 d-flex justify-content-between align-items-center text-center gap-3'>
                 <Col sm='6' className=' text-center'>
                     <div className='login-text my-4'>
@@ -56,16 +81,16 @@ const Signup = () => {
                         <h2>Sign Up for Access.</h2>
 
                         <form onSubmit={handleRegisterForm}>
-                            
+
                             <Form.Control className='mt-3' onBlur={(e) => setName(e.target.value)} type="text" name="name" placeholder="Name" required />
 
                             <Form.Control className='mt-3' onBlur={(e) => setEmail(e.target.value)} type="email" name="email" placeholder="Email" required />
 
-                            
+
                             <FormControl className='mt-3' onBlur={(e) => setPass(e.target.value)} type="password" name="password" placeholder="Password" required />
 
 
-                            <input type="submit" value="Sign Up" className="btn btn-primary text-dark w-100 p-2 mt-3" style={{ backgroundColor: "#C7FF32" , border:'none' }}></input>
+                            <input type="submit" value="Sign Up" className="btn btn-primary text-dark w-100 p-2 mt-3" style={{ backgroundColor: "#C7FF32", border: 'none' }}></input>
                         </form>
                         <GoogleSignIn></GoogleSignIn>
                         <p className='mt-2 mx-auto fs-6'>Already Registered? Go to  <Link className='text-success text-decoration-none fw-6' to='/login'>Login Page.</Link></p>
