@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Row, Table } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import useInventory from '../../hook/useInventory';
 import InventoryTable from './InventoryTable';
 
 const ManageInventory = () => {
     const [items,] = useInventory()
+    const navigate = useNavigate()
     return (
         <div className='py-5'>
             <div className='container'>
@@ -15,7 +17,7 @@ const ManageInventory = () => {
                         <h2 className='text-center my-5 fw-5'>Duds Inventory Items</h2>
 
 
-                        <Button className="btn text-light px-3 rounded" style={{ backgroundColor: "#21C9B6", border: 'none' }}>+</Button>
+                        <Button onClick={()=>navigate('/additems')} className="btn text-light px-3 rounded" style={{ backgroundColor: "#21C9B6", border: 'none' }}>+</Button>
 
                     </div>
 

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import signup from '../../images/signup.webp'
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import { Card, Col, Container, Form, FormControl, Row } from 'react-bootstrap';
-// import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import { updateProfile } from "firebase/auth";
 
 const Signup = () => {
@@ -13,8 +12,6 @@ const Signup = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
-    // const [updateProfile, updating] = useUpdateProfile(auth);
-
 
     // destructuring the hook......
     const [
@@ -23,12 +20,6 @@ const Signup = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-
-    // const handleUpdateProfile = async() =>{
-    //     await updateProfile({name})
-    //     console.log("Name Update")
-
-    // }
 
     const handleUpdateProfile = () => {
         updateProfile(auth.currentUser, {

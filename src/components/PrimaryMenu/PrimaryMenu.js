@@ -8,7 +8,7 @@ import auth from '../../firebase.init';
 
 const PrimaryMenu = () => {
     const [user] = useAuthState(auth);
-    console.log("navbar",user)
+    console.log("navbar", user)
 
     const handleSignOut = () => {
         signOut(auth);
@@ -39,7 +39,12 @@ const PrimaryMenu = () => {
                                     <Nav.Link><Link className='menuitem' to='/inventory/:id'>Inventory</Link></Nav.Link>
                                     {
                                         user?.uid ?
-                                            <Nav.Link className='text-dark' onClick={handleSignOut}>Sign Out</Nav.Link>
+                                            <>
+                                                <Nav.Link><Link className='menuitem' to='/additems'>Add Items</Link></Nav.Link>
+                                                <Nav.Link className='text-dark' onClick={handleSignOut}>Sign Out</Nav.Link>
+                                                <Nav.Link className='text-dark fw-6'>{user.displayName}</Nav.Link>
+
+                                            </>
                                             :
                                             <>
                                                 <Nav.Link><Link className='menuitem' to='/login'>Login</Link></Nav.Link>

@@ -14,7 +14,7 @@ const Banner = () => {
                     </div>
                     <div className='banner-btn my-3 d-md-flex align-items-center justify-content-center '>
                         <Link className='btn raw-btn flex-btn' to='/login'>Login to Access</Link>
-                        <Link className='btn raw-btn raw-btn-outline flex-btn' to='/blog'>Go Inventory</Link>
+                        <Link className='btn raw-btn raw-btn-outline flex-btn' to='/inventory'>Go Inventory</Link>
                     </div>
                 </div>
 

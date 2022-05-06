@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { Card, Col, Container, Form, Row } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import duds from '../../images/dudsfashion.png'
+import auth from '../../firebase.init';
+import axios from 'axios';
 
 const AddInventory = () => {
+    const [user] = useAuthState(auth)
+    console.log("ANIK",user.email)
+    const email = user.email
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
@@ -14,6 +20,9 @@ const AddInventory = () => {
     // click the sign up btn......
     const handleAddItemsForm = (e) => {
         e.preventDefault()
+        const data = {name,price,quantity,description,image,supplierName,email}
+        console.log("data", data)
+        axios.post('http://localhost:5000/users/',data).then(res=>console.log("success sent",res))
 
         e.target.reset()
 
