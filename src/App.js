@@ -11,8 +11,8 @@ import RequireAuth from './components/RequireAuth/RequireAuth';
 import PrimaryMenu from './components/PrimaryMenu/PrimaryMenu';
 import ManageInventory from './components/Inventory/ManageInventory';
 import AddInventory from './components/Inventory/AddInventory';
-import AddItems from './components/Inventory/AddItems';
 import MyItems from './components/Inventory/MyItems';
+import DisplayItem from './components/Inventory/DisplayItem';
 function App() {
   return (
     <div className="App">
@@ -26,7 +26,7 @@ function App() {
           <ManageInventory></ManageInventory>
         </RequireAuth>}></Route>
         <Route path='/inventory/:id' element={<RequireAuth>
-          <ManageInventory></ManageInventory>
+          <DisplayItem></DisplayItem>
         </RequireAuth>}></Route>
         <Route path='/additems' element={<RequireAuth>
           <AddInventory></AddInventory>

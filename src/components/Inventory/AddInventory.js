@@ -9,6 +9,7 @@ const AddInventory = () => {
     const [user] = useAuthState(auth)
     console.log("ANIK",user.email)
     const email = user.email
+    const sold = 0
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
@@ -20,7 +21,7 @@ const AddInventory = () => {
     // click the sign up btn......
     const handleAddItemsForm = (e) => {
         e.preventDefault()
-        const data = {name,price,quantity,description,image,supplierName,email}
+        const data = {name,price,quantity,description,image,supplierName,email,sold}
         console.log("data", data)
         axios.post('http://localhost:5000/users/',data).then(res=>console.log("success sent",res))
 

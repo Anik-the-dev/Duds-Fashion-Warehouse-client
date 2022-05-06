@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const HomeInventory = ({ singleItem }) => {
-    const { name, price, quantity, image,description } = singleItem
+    const navigate = useNavigate()
+    const { _id,name, price, quantity, image,description } = singleItem
 
 
     return (
@@ -15,7 +16,7 @@ const HomeInventory = ({ singleItem }) => {
                     <Card.Text>
                         {description}
                     </Card.Text>
-                    <Button style={{ backgroundColor: '#21C9B6', border:'none'}}>Go somewhere</Button>
+                    <Button onClick={()=>navigate(`/inventory/${_id}`)} style={{ backgroundColor: '#21C9B6', border:'none'}}>Go somewhere</Button>
                 </Card.Body>
             </Card>
         </Col>
