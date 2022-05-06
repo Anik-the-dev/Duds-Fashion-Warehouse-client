@@ -8,6 +8,8 @@ const DisplayItemCard = ({ singleItem }) => {
     const [addquantity, setAddQuantity] = useState(0)
     const [delivered, setDelivered] = useState(sold)
     const [change, setChange] = useState({})
+    const [updatedQuantity, setUpdatedQuantity] = useState(0)
+    const [updatedSold, setUpdatedSold] = useState(0)
     console.log("delivered",delivered)
 
 
@@ -33,10 +35,10 @@ const DisplayItemCard = ({ singleItem }) => {
                 console.log('Update Success:', data);
                 alert("Product Delivered Successfully!")
                
-                if (data.acknowledged) {
+                if (data.modifiedCount>0) {
                     fetch(`http://localhost:5000/users/${_id}`)
                         .then(res => res.json())
-                        .then(data => setChange(data))
+                        .then(data => console.log(data))
 
 
                 }
@@ -76,11 +78,13 @@ const DisplayItemCard = ({ singleItem }) => {
                 console.log('Update Success:', data);
                 alert("Product Delivered Successfully!")
                 e.target.reset()
-                if (data.acknowledged) {
+                if (data.modifiedCount>0) {
                     fetch(`http://localhost:5000/users/${_id}`)
                         .then(res => res.json())
-                        .then(data => {setChange(data)
-                        console.log("Change",change)})
+                        .then(data => {
+                        console.log("Data",data)
+                       
+                    })
 
 
 
