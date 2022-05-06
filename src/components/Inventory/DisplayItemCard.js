@@ -11,44 +11,43 @@ const DisplayItemCard = ({ singleItem }) => {
     console.log("delivered",delivered)
 
 
-    // const handleDeliveredProducts = () => {
-    //     const newDelivered = parseInt(sold) + 1
-    //     setDelivered(newDelivered)
-    //     console.log(delivered)
+    const handleDeliveredProducts = () => {
+        const delivered = parseInt(sold) + 1
+        console.log(delivered)
 
-    //     const quantityAfterDeliver = parseInt(quantity) - 1
-    //     setAddQuantity(quantityAfterDeliver)
+        const n = parseInt(quantity) - 1
+        
 
-    //     const data = { addquantity, delivered }
-    //     console.log(data)
+        const data = { n, delivered }
+        console.log(data)
 
-    //     fetch(`http://localhost:5000/users/${_id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data),
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             console.log('Update Success:', data);
-    //             alert("Product Delivered Successfully!")
+        fetch(`http://localhost:5000/users/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Update Success:', data);
+                alert("Product Delivered Successfully!")
                
-    //             if (data.acknowledged) {
-    //                 fetch(`http://localhost:5000/users/${_id}`)
-    //                     .then(res => res.json())
-    //                     .then(data => setChange(data))
+                if (data.acknowledged) {
+                    fetch(`http://localhost:5000/users/${_id}`)
+                        .then(res => res.json())
+                        .then(data => setChange(data))
 
 
-    //             }
+                }
 
 
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error:', error);
-    //         });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
 
-    // }
+    }
 
 
 
@@ -132,7 +131,7 @@ const DisplayItemCard = ({ singleItem }) => {
                         <ListGroup.Item as="li" className='text-start d-flex align-items-center justify-content-between'>
                             <p>Sold: {sold}</p>
                             {/* onClick={() => handleDeliveredProducts()} */}
-                            <Button  className='bg-danger border-0'>Delivered</Button>
+                            <Button   onClick={() => handleDeliveredProducts()} className='bg-danger border-0'>Delivered</Button>
                         </ListGroup.Item>
 
 
