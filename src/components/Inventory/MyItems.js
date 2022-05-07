@@ -16,7 +16,7 @@ const MyItems = () => {
 
             const url = `http://localhost:5000/myitem?email=${email}`;
             const { data } = await axios.get(url)
-            
+
             setDatas(data)
             console.log(data)
 
@@ -24,7 +24,7 @@ const MyItems = () => {
         getMyItems()
     }, [user])
 
-    console.log("datas",datas)
+    console.log("datas", datas)
 
     return (
         <div className='py-5'>
@@ -68,6 +68,11 @@ const MyItems = () => {
 
                             </tbody>
                         </Table>
+
+                    </div>
+                    <div className='d-flex mt-4 justify-content-end'>
+                        <Button onClick={() => navigate('/additems')} className="btn text-light px-3 rounded" style={{ backgroundColor: "#21C9B6", border: 'none' }}>Add More Items</Button>
+
                     </div>
 
 

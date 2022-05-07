@@ -17,7 +17,7 @@ const ManageInventory = () => {
                         <h2 className='text-center my-5 fw-5'>Duds Inventory Items</h2>
 
 
-                        <Button onClick={()=>navigate('/additems')} className="btn text-light px-3 rounded" style={{ backgroundColor: "#21C9B6", border: 'none' }}>+</Button>
+                        <Button onClick={() => navigate('/additems')} className="btn text-light px-3 rounded" style={{ backgroundColor: "#21C9B6", border: 'none' }}>+</Button>
 
                     </div>
 
@@ -49,6 +49,12 @@ const ManageInventory = () => {
 
                             </tbody>
                         </Table>
+
+                    </div>
+
+                    <div className='d-flex mt-4 justify-content-end'>
+                        <Button onClick={() => navigate('/additems')} className="btn text-light px-3 rounded" style={{ backgroundColor: "#21C9B6", border: 'none' }}>Add More Items</Button>
+
                     </div>
 
 

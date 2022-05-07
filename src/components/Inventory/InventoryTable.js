@@ -3,11 +3,11 @@ import { Button, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const InventoryTable = ({ singleItem }) => {
-    const { _id} = singleItem
+    const { _id } = singleItem
     const navigate = useNavigate()
     const [user, setUser] = useState([singleItem])
 
-    
+
 
     // delete item
     const handleDeleteItem = (id) => {
@@ -21,7 +21,7 @@ const InventoryTable = ({ singleItem }) => {
                     console.log(data)
                     if (data.deletedCount > 0) {
                         const remainingUser = user.filter(item => item._id !== id)
-                        
+
                         setUser(remainingUser)
 
                     }
@@ -33,24 +33,27 @@ const InventoryTable = ({ singleItem }) => {
     }
     return (
         <>
-              {
-            user.map(item => <tr>
+            {
+                user.map(item => <tr>
 
-                <td>{item.name}</td>
-                <td>{item.quantity}</td>
-                <td>${item.price}.0</td>
-                <td>{item.supplierName}</td>
-                <td>
-                    <Button onClick={() => navigate(`/inventory/${_id}`)} className="btn btn-primary text-light px-4" style={{ backgroundColor: "#21C9B6", border: 'none' }}>Update</Button>
-                </td>
-                <td>
-                    <Button onClick={() => handleDeleteItem(_id)} className="btn btn-danger text-light px-4" style={{ border: 'none' }}>X</Button>
-                </td>
-            </tr>
-            )
-        }
+                    <td>{item.name}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.price}.0</td>
+                    <td>{item.supplierName}</td>
+                    <td>
+                        <Button onClick={() => navigate(`/inventory/${_id}`)} className="btn btn-primary text-light px-4" style={{ backgroundColor: "#21C9B6", border: 'none' }}>Update</Button>
+                    </td>
+                    <td>
+                        <Button onClick={() => handleDeleteItem(_id)} className="btn btn-danger text-light px-4" style={{ border: 'none' }}>X</Button>
+                    </td>
+                </tr>
+                )
+            }
+
+           
+
         </>
-      
+
 
 
 
