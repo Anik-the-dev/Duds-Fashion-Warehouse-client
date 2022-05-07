@@ -6,6 +6,7 @@ const InventoryTable = ({ singleItem }) => {
     const { _id} = singleItem
     const navigate = useNavigate()
     const [user, setUser] = useState([singleItem])
+
     
 
     // delete item

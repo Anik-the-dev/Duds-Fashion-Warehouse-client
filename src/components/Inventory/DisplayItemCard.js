@@ -6,21 +6,25 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const DisplayItemCard = ({ singleItem }) => {
     const { _id, image, name, description, quantity, price, sold, supplierName } = singleItem
+    console.log("singleItem",singleItem)
+    const [modifiedData, setModifiedData] = useState([singleItem])
 
     const [addquantity, setAddQuantity] = useState(0)
-    const [delivered, setDelivered] = useState(sold)
+   // const [delivered, setDelivered] = useState(modifiedData[0].sold)
     // const [change, setChange] = useState({})
     // const [updatedQuantity, setUpdatedQuantity] = useState(0)
     // const [updatedSold, setUpdatedSold] = useState(0)
-    console.log("delivered",delivered)
+    
+   // console.log("delivered", delivered)
+    console.log("modifiedData",modifiedData)
 
 
     const handleDeliveredProducts = () => {
-        const delivered = parseInt(sold) + 1
+        const delivered = parseInt(modifiedData[0].sold) + 1
         console.log(delivered)
 
-        const n = parseInt(quantity) - 1
-        
+        const n = parseInt(modifiedData[0].quantity) - 1
+
 
         const data = { n, delivered }
         console.log(data)
@@ -36,11 +40,11 @@ const DisplayItemCard = ({ singleItem }) => {
             .then(data => {
                 console.log('Update Success:', data);
                 toast("Product Delivered Successfully!")
-               
-                if (data.modifiedCount>0) {
+
+                if (data.modifiedCount > 0) {
                     fetch(`http://localhost:5000/users/${_id}`)
                         .then(res => res.json())
-                        .then(data => console.log(data))
+                        .then(data => setModifiedData(data))
 
 
                 }
@@ -55,18 +59,15 @@ const DisplayItemCard = ({ singleItem }) => {
 
 
 
-
-
-
-
     const handleQuantityForm = (e) => {
         e.preventDefault()
-        const n = parseInt(addquantity) + parseInt(quantity)
+        const n = parseInt(addquantity) + parseInt(modifiedData[0].quantity)
+        const delivered = parseInt(modifiedData[0].sold)
 
         const data = { n, delivered }
-        console.log("data",data)
-        
-        
+        console.log("data", data)
+
+
 
         fetch(`http://localhost:5000/users/${_id}`, {
             method: 'PUT',
@@ -80,13 +81,13 @@ const DisplayItemCard = ({ singleItem }) => {
                 console.log('Update Success:', data);
                 toast("Product Added Successfully!")
                 e.target.reset()
-                if (data.modifiedCount>0) {
+                if (data.modifiedCount > 0) {
                     fetch(`http://localhost:5000/users/${_id}`)
                         .then(res => res.json())
                         .then(data => {
-                        console.log("Data",data)
-                       
-                    })
+                            setModifiedData(data)
+
+                        })
 
 
 
@@ -100,7 +101,12 @@ const DisplayItemCard = ({ singleItem }) => {
 
     }
 
-   
+
+
+
+
+
+
 
 
 
@@ -109,39 +115,48 @@ const DisplayItemCard = ({ singleItem }) => {
 
 
     return (
+
         <Container>
+
             <h1 className='mt-5 fw-6 fs-3 text-md-start text-center' style={{ color: "#2F2869" }}>Product: {name}</h1>
 
             <Row className='mx-auto my-5 d-flex justify-content-between align-items-center text-center gap-3'>
                 <Col sm='6' className=' text-center'>
                     <div className='login-text '>
-                        <img className='img-fluid p-3 rounded border' src={image} alt='Login' />
+                        <img className='img-fluid p-3 rounded border' src={image} alt='product' />
 
                     </div>
 
                 </Col>
 
                 <Col sm>
-                    <ListGroup as="ul" className='w-75 mx-auto' >
+                    {
+                        modifiedData.map(i=><ListGroup as="ul" className='w-75 mx-auto' >
                         <ListGroup.Item as="li" className='fw-6 text-start'>
-                            Product: {name}
+                            Product: {i.name}
                         </ListGroup.Item>
                         <ListGroup.Item as="li" className='text-start'>
-                            Price : ${price}
+                            Price : ${i.price}
                         </ListGroup.Item>
-                        <ListGroup.Item as="li" className='text-start'>Description:{description}</ListGroup.Item>
+                        <ListGroup.Item as="li" className='text-start'>Description:{i.description}</ListGroup.Item>
                         <ListGroup.Item as="li" className='text-start'>
-                            Quantity: {quantity}
+                            Quantity: {i.quantity}
                         </ListGroup.Item>
-                        <ListGroup.Item as="li" className='text-start'>Supplier: {supplierName}</ListGroup.Item>
+                        <ListGroup.Item as="li" className='text-start'>Supplier: {i.supplierName}</ListGroup.Item>
                         <ListGroup.Item as="li" className='text-start d-flex align-items-center justify-content-between'>
-                            <p>Sold: {sold}</p>
-                            {/* onClick={() => handleDeliveredProducts()} */}
-                            <Button   onClick={() => handleDeliveredProducts()} className='bg-danger border-0'>Delivered</Button>
+                            <p>Sold: {i.sold}</p>
+                            <Button onClick={() => handleDeliveredProducts()} className='bg-danger border-0'>Delivered</Button>
                         </ListGroup.Item>
 
 
-                    </ListGroup>
+                    </ListGroup>)
+                    }
+
+                    
+
+
+
+                    
 
                     <Card className='p-5 mt-5 w-75 mx-auto'>
                         <h2>Add Products Stock</h2>
