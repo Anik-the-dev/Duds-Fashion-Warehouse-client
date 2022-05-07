@@ -7,6 +7,8 @@ import login from '../../images/login.jpg'
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { Toast } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     // declare the states......
@@ -35,32 +37,34 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';
-    if(user){
-        navigate(from, {replace:true})
+    if (user) {
+        navigate(from, { replace: true })
     }
 
     // handle password reset
     const handlePasswordReset = (e) => {
-        
-        sendPasswordResetEmail(auth, email)
-            .then(() => {
-                // Password reset email sent!
-                setReset(true)
-                console.log("reset called")
-                // ..
-            })
-            .catch((err)=>{
-                setResetError(err?.message)
 
-            })
+        if (email) {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    // Password reset email sent!
+                    setReset(true)
+                    console.log("reset called")
+                    // ..
+                })
+                .catch((err) => {
+                    setResetError(err?.message)
+
+                })
+            toast('Email Sent! Check Your Email.')
+        }
+        else{
+            toast('Enter your Email First')
+
+        }
 
     }
 
-
-    console.log(user)
-    console.log(user?.user)
-    console.log(user?.user?.uid)
-    console.log("Eroor:", error)
     return (
         <Container>
             <h1 className='mt-5 fw-6 fs-3 text-md-start text-center' style={{ color: "#2F2869" }}>dudsFashion Inventory.</h1>
@@ -91,7 +95,7 @@ const Login = () => {
 
                                 <input type="submit" value="Login" className="btn btn-primary w-50 p-2 " style={{ backgroundColor: "#7161F8" }}></input>
                                 <p onClick={handlePasswordReset} className='text-primary pt-3 pe-auto'>Forget Password?</p>
-                                {
+                                {/* {
                                     reset ?
                                     <Toast onClose={() => setReset(false)} show={reset} delay={7000} autohide>
                                         <Toast.Header>
@@ -101,7 +105,7 @@ const Login = () => {
                                         </Toast.Header>
                                         <Toast.Body>Check Your Email and Reset Password.</Toast.Body>
                                     </Toast> : <p className='mt-2 text-danger fw-6'>{resetError}</p>
-                                }
+                                } */}
 
                             </div>
                             <p className='mt-2 text-danger fw-6'>{error?.message}</p>
@@ -110,6 +114,7 @@ const Login = () => {
 
                         <GoogleSignIn></GoogleSignIn>
                         <p className='mt-2 mx-auto fs-6'>If You are new Admin, Go to  <Link className='text-success text-decoration-none fw-6' to='/signup'>Sign Up Page.</Link></p>
+                        <ToastContainer />
 
                     </Card>
                 </Col>
