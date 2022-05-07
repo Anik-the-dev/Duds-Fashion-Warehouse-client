@@ -108,6 +108,8 @@ body {
   width: 25%;
 }
 
+
+
 @media only screen and (max-width: 698px) {
  .featuredItem{
    width:100%
