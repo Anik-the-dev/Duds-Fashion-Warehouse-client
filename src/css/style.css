@@ -108,6 +108,10 @@ body {
   width: 25%;
 }
 
+.footer{
+  margin-top: 10%;
+  padding: 5% 20px;
+}
 
 
 @media only screen and (max-width: 698px) {

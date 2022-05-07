@@ -13,6 +13,7 @@ import ManageInventory from './components/Inventory/ManageInventory';
 import AddInventory from './components/Inventory/AddInventory';
 import MyItems from './components/Inventory/MyItems';
 import DisplayItem from './components/Inventory/DisplayItem';
+import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,7 @@ function App() {
 
 
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

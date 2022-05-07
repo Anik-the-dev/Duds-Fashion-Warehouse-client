@@ -23,9 +23,9 @@ const DudsChart = () => {
                         <p className='mb-4 fw-6 text-center'>Top Selling Products</p>
                         <PieChart
                             data={[
-                                { title: 'One', value: 15, color: '#E1525F' },
-                                { title: 'Two', value: 30, color: '#3B996D' },
-                                { title: 'Three', value: 20, label: "20", color: '#FFC107' },
+                                { title: 'One', value: 15, color: '#198754' },
+                                { title: 'Two', value: 30, color: '#FFC107' },
+                                { title: 'Three', value: 20, label: "20", color: '#E1525F' },
                                 { title: 'Four', value: 12, color: '#31D2F2' },
                                
                             ]}
@@ -35,19 +35,19 @@ const DudsChart = () => {
                     <div style={{ width: "75%" }} className='d-grid align-items-center mt-5'>
                         <div  className='d-flex gap-5'>
                             <p className='text-dark fw-6'>DF Green Boxer Pro</p>
-                            <ProgressBar animated variant="success" now={75} label={`75`} style={{ height: "25px", width: "75%" }} />
+                            <ProgressBar animated variant="warning" now={75} label={`75`} style={{ height: "25px", width: "75%" }} />
 
                         </div>
 
                         <div  className='d-flex gap-5'>
                             <p className='text-dark fw-6'>DF Orange Trouser</p>
-                            <ProgressBar animated variant="warning" now={65} label={`65%`} style={{ height: "25px", width: "75%" }} />
+                            <ProgressBar animated variant="danger" now={65} label={`65%`} style={{ height: "25px", width: "75%" }} />
 
                         </div>
 
                         <div  className='d-flex gap-5'>
                             <p className='text-dark fw-6'>DF Ash BLue Jeans</p>
-                            <ProgressBar animated variant="danger" now={40} label={`40%`} style={{ height: "25px", width: "75%" }} />
+                            <ProgressBar animated variant="success" now={40} label={`40%`} style={{ height: "25px", width: "75%" }} />
 
                         </div>
 
