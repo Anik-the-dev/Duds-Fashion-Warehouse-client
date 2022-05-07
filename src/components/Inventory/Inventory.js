@@ -15,7 +15,7 @@ const Inventory = () => {
                     <Row>
 
                         {
-                            items.map(item => <HomeInventory key={item._id} singleItem={item}></HomeInventory>
+                            items.slice(0,6).map(item => <HomeInventory key={item._id} singleItem={item}></HomeInventory>
                             )
                         }
 

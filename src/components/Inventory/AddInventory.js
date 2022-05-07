@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import duds from '../../images/dudsfashion.png'
 import auth from '../../firebase.init';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddInventory = () => {
     const [user] = useAuthState(auth)
@@ -18,12 +19,11 @@ const AddInventory = () => {
     const [image, setImage] = useState('')
     const [supplierName, setSupplierName] = useState('')
 
-    // click the sign up btn......
+    // click the add items btn......
     const handleAddItemsForm = (e) => {
         e.preventDefault()
         const data = {name,price,quantity,description,image,supplierName,email,sold}
-        console.log("data", data)
-        axios.post('http://localhost:5000/users/',data).then(res=>console.log("success sent",res))
+        axios.post('http://localhost:5000/users/',data).then(res=> toast("Product Added Successfully!"))
 
         e.target.reset()
 
@@ -65,6 +65,7 @@ const AddInventory = () => {
 
                             <input type="submit" value="Add Stock" className="btn btn-primary w-100 p-2 mt-3 text-light" style={{ backgroundColor: "#21C9B6",border: 'none' }}></input>
                         </form>
+                        <ToastContainer/>
 
 
                     </Card>
