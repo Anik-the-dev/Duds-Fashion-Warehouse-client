@@ -3,20 +3,22 @@ import React, { useState } from 'react';
 import { Card, Col, Container, Form, ListGroup, Row } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const DisplayItemCard = ({ singleItem }) => {
     const { _id, image, name, description, quantity, price, sold, supplierName } = singleItem
-    console.log("singleItem",singleItem)
+    console.log("singleItem", singleItem)
     const [modifiedData, setModifiedData] = useState([singleItem])
+    const navigate = useNavigate()
 
     const [addquantity, setAddQuantity] = useState(0)
-   // const [delivered, setDelivered] = useState(modifiedData[0].sold)
+    // const [delivered, setDelivered] = useState(modifiedData[0].sold)
     // const [change, setChange] = useState({})
     // const [updatedQuantity, setUpdatedQuantity] = useState(0)
     // const [updatedSold, setUpdatedSold] = useState(0)
-    
-   // console.log("delivered", delivered)
-    console.log("modifiedData",modifiedData)
+
+    // console.log("delivered", delivered)
+    console.log("modifiedData", modifiedData)
 
 
     const handleDeliveredProducts = () => {
@@ -131,32 +133,32 @@ const DisplayItemCard = ({ singleItem }) => {
 
                 <Col sm>
                     {
-                        modifiedData.map(i=><ListGroup as="ul" className='w-75 mx-auto' >
-                        <ListGroup.Item as="li" className='fw-6 text-start'>
-                            Product: {i.name}
-                        </ListGroup.Item>
-                        <ListGroup.Item as="li" className='text-start'>
-                            Price : ${i.price}
-                        </ListGroup.Item>
-                        <ListGroup.Item as="li" className='text-start'>Description:{i.description}</ListGroup.Item>
-                        <ListGroup.Item as="li" className='text-start'>
-                            Quantity: {i.quantity}
-                        </ListGroup.Item>
-                        <ListGroup.Item as="li" className='text-start'>Supplier: {i.supplierName}</ListGroup.Item>
-                        <ListGroup.Item as="li" className='text-start d-flex align-items-center justify-content-between'>
-                            <p>Sold: {i.sold}</p>
-                            <Button onClick={() => handleDeliveredProducts()} className='bg-danger border-0'>Delivered</Button>
-                        </ListGroup.Item>
+                        modifiedData.map(i => <ListGroup as="ul" className='w-75 mx-auto' >
+                            <ListGroup.Item as="li" className='fw-6 text-start'>
+                                Product: {i.name}
+                            </ListGroup.Item>
+                            <ListGroup.Item as="li" className='text-start'>
+                                Price : ${i.price}
+                            </ListGroup.Item>
+                            <ListGroup.Item as="li" className='text-start'>Description:{i.description}</ListGroup.Item>
+                            <ListGroup.Item as="li" className='text-start'>
+                                Quantity: {i.quantity}
+                            </ListGroup.Item>
+                            <ListGroup.Item as="li" className='text-start'>Supplier: {i.supplierName}</ListGroup.Item>
+                            <ListGroup.Item as="li" className='text-start d-flex align-items-center justify-content-between'>
+                                <p>Sold: {i.sold}</p>
+                                <Button onClick={() => handleDeliveredProducts()} className='bg-danger border-0'>Delivered</Button>
+                            </ListGroup.Item>
 
 
-                    </ListGroup>)
+                        </ListGroup>)
                     }
 
-                    
 
 
 
-                    
+
+
 
                     <Card className='p-5 mt-5 w-75 mx-auto'>
                         <h2>Add Products Stock</h2>
@@ -182,10 +184,16 @@ const DisplayItemCard = ({ singleItem }) => {
 
 
 
+
                     </Card>
 
                 </Col>
             </Row >
+
+            <div className='d-flex mt-4 justify-content-center '>
+                <Button onClick={() => navigate('/inventory')} className="btn  btn-danger text-light px-5 py-3 rounded" style={{ border: 'none' , width:'50%'}}>Manage All Inventory</Button>
+
+            </div>
 
         </Container >
     );
