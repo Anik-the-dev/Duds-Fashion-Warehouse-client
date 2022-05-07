@@ -14,8 +14,8 @@ const Login = () => {
     // declare the states......
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
-    const [reset, setReset] = useState(false)
-    const [resetError, setResetError] = useState('')
+    // const [reset, setReset] = useState(false)
+    // const [resetError, setResetError] = useState('')
 
     // destructuring the hook......
     const [
@@ -46,20 +46,13 @@ const Login = () => {
 
         if (email) {
             sendPasswordResetEmail(auth, email)
-                .then(() => {
-                    // Password reset email sent!
-                    setReset(true)
-                    console.log("reset called")
-                    // ..
-                })
-                .catch((err) => {
-                    setResetError(err?.message)
-
-                })
+               
             toast('Email Sent! Check Your Email.')
+            
         }
         else{
             toast('Enter your Email First')
+            
 
         }
 

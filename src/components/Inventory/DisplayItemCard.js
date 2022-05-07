@@ -1,15 +1,17 @@
 import { Button } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { Card, Col, Container, Form, ListGroup, Row } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DisplayItemCard = ({ singleItem }) => {
     const { _id, image, name, description, quantity, price, sold, supplierName } = singleItem
 
     const [addquantity, setAddQuantity] = useState(0)
     const [delivered, setDelivered] = useState(sold)
-    const [change, setChange] = useState({})
-    const [updatedQuantity, setUpdatedQuantity] = useState(0)
-    const [updatedSold, setUpdatedSold] = useState(0)
+    // const [change, setChange] = useState({})
+    // const [updatedQuantity, setUpdatedQuantity] = useState(0)
+    // const [updatedSold, setUpdatedSold] = useState(0)
     console.log("delivered",delivered)
 
 
@@ -33,7 +35,7 @@ const DisplayItemCard = ({ singleItem }) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Update Success:', data);
-                alert("Product Delivered Successfully!")
+                toast("Product Delivered Successfully!")
                
                 if (data.modifiedCount>0) {
                     fetch(`http://localhost:5000/users/${_id}`)
@@ -76,7 +78,7 @@ const DisplayItemCard = ({ singleItem }) => {
             .then(response => response.json())
             .then(data => {
                 console.log('Update Success:', data);
-                alert("Product Delivered Successfully!")
+                toast("Product Added Successfully!")
                 e.target.reset()
                 if (data.modifiedCount>0) {
                     fetch(`http://localhost:5000/users/${_id}`)
@@ -161,6 +163,7 @@ const DisplayItemCard = ({ singleItem }) => {
                             </div> */}
 
                         </form>
+                        <ToastContainer></ToastContainer>
 
 
 

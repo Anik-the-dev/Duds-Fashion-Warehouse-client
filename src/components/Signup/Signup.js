@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import signup from '../../images/signup.webp'
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import { Card, Col, Container, Form, FormControl, Row } from 'react-bootstrap';
@@ -20,6 +20,15 @@ const Signup = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
+    // Redirect to inventory page
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+    if (user) {
+        navigate(from, { replace: true })
+    }
+
 
     const handleUpdateProfile = () => {
         updateProfile(auth.currentUser, {

@@ -3,11 +3,18 @@ import google from '../../images/google.png'
 import auth from '../../firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const GoogleSignIn = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    console.log(user)
+    // Redirect to inventory page
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+    if (user) {
+        navigate(from, { replace: true })
+    }
+
     return (
         <>
             <p className='mt-3 mx-auto fs-5'>Or You Can.</p>

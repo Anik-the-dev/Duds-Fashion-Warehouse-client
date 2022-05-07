@@ -1,21 +1,45 @@
 import React from 'react';
 import { Button, Table } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const InventoryTable = ({ singleItem }) => {
-    const { name, price, quantity, image,supplierName } = singleItem
-    console.log(singleItem)
+    const { _id, name, price, quantity, image, supplierName } = singleItem
+    const navigate = useNavigate()
+
+    // delete item
+    const handleDeleteItem = (id) => {
+        const proceed = window.confirm("Want to Delete?")
+        if (proceed) {
+            const url = `http://localhost:5000/users/${id}`
+            fetch(url, {
+                method: 'delete'
+            }).then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    // if (data.deletedCount > 0) {
+                    //     const remainingUser = user.filter(item => item._id !== id)
+                    //     console.log(remainingUser)
+                    //     setUser(remainingUser)
+
+                    // }
+                })
+
+
+        }
+
+    }
     return (
         <tr>
-            
+
             <td>{name}</td>
             <td>{quantity}</td>
             <td>${price}.0</td>
             <td>{supplierName}</td>
             <td>
-                <Button className="btn btn-primary text-light px-4" style={{ backgroundColor: "#21C9B6" , border:'none'}}>Update</Button>
+                <Button onClick={() => navigate(`/inventory/${_id}`)} className="btn btn-primary text-light px-4" style={{ backgroundColor: "#21C9B6", border: 'none' }}>Update</Button>
             </td>
             <td>
-                <Button className="btn btn-danger text-light px-4" style={{ border:'none'}}>X</Button>
+                <Button onClick={() => handleDeleteItem(_id)} className="btn btn-danger text-light px-4" style={{ border: 'none' }}>X</Button>
             </td>
         </tr>
 
