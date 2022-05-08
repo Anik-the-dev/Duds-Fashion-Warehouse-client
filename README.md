@@ -1,7 +1,7 @@
-## Duds Fashion Inventory
+# Duds Fashion Inventory
 # Site: https://dudsfashion-auth.web.app/
 
-# Description: This project is built for a fashion house to manage their inventory. In this project we have used React, ExpressJs, Bootstrap.
+## Description: This project is built for a fashion house to manage their inventory. In this project we have used React, ExpressJs, Bootstrap.
 
 # Functionalities and Features:
 * We use here Protected Route System for security purpose.
