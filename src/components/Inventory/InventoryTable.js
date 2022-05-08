@@ -13,7 +13,7 @@ const InventoryTable = ({ singleItem }) => {
     const handleDeleteItem = (id) => {
         const proceed = window.confirm("Want to Delete?")
         if (proceed) {
-            const url = `http://localhost:5000/users/${id}`
+            const url = `https://protected-woodland-78781.herokuapp.com/users/${id}`
             fetch(url, {
                 method: 'delete'
             }).then(res => res.json())

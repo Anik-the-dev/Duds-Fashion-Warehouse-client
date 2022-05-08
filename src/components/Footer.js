@@ -20,7 +20,7 @@ const Footer = () => {
 
                         <Nav.Link><Link className='menuitem text-light' to='/'>Home</Link></Nav.Link>
                         <Nav.Link><Link className='menuitem text-light' to='/blog'>Blog</Link></Nav.Link>
-                        <Nav.Link><Link className='menuitem text-light' to='/inventory/:id'>Inventory</Link></Nav.Link>
+                        <Nav.Link><Link className='menuitem text-light' to='/inventory'>Inventory</Link></Nav.Link>
                         <Nav.Link><Link className='menuitem text-light' to='/login'>Login</Link></Nav.Link>
                         <Nav.Link><Link className='menuitem text-light' to='/signup'>Signup</Link></Nav.Link>
                     </div>

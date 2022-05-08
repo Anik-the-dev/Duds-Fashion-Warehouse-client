@@ -15,6 +15,7 @@ import MyItems from './components/Inventory/MyItems';
 import DisplayItem from './components/Inventory/DisplayItem';
 import Footer from './components/Footer';
 import Notfound from './components/Notfound';
+import About from './components/About';
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Notfound />} />
@@ -34,8 +36,10 @@ function App() {
         <Route path='/additems' element={<RequireAuth>
           <AddInventory></AddInventory>
         </RequireAuth>}></Route>
-        <Route path='/myitems' element={
+        <Route path='/myitems' element={<RequireAuth>
           <MyItems></MyItems>
+          </RequireAuth>
+
         }></Route>
 
 

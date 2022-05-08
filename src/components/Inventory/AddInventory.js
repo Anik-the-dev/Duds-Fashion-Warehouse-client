@@ -23,7 +23,7 @@ const AddInventory = () => {
     const handleAddItemsForm = (e) => {
         e.preventDefault()
         const data = {name,price,quantity,description,image,supplierName,email,sold}
-        axios.post('http://localhost:5000/users/',data).then(res=> toast("Product Added Successfully!"))
+        axios.post('https://protected-woodland-78781.herokuapp.com/users/',data).then(res=> toast("Product Added Successfully!"))
 
         e.target.reset()
 

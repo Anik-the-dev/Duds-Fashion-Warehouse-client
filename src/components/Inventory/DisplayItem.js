@@ -8,7 +8,7 @@ const DisplayItem = () => {
     const [items, setItems] = useState([])
     console.log(items)
     useEffect(() => {
-        const url = `http://localhost:5000/users/${id}`
+        const url = `https://protected-woodland-78781.herokuapp.com/users/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setItems(data))

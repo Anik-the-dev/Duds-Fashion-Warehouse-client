@@ -31,7 +31,7 @@ const DisplayItemCard = ({ singleItem }) => {
         const data = { n, delivered }
         console.log(data)
 
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://protected-woodland-78781.herokuapp.com/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const DisplayItemCard = ({ singleItem }) => {
                 toast("Product Delivered Successfully!")
 
                 if (data.modifiedCount > 0) {
-                    fetch(`http://localhost:5000/users/${_id}`)
+                    fetch(`https://protected-woodland-78781.herokuapp.com/users/${_id}`)
                         .then(res => res.json())
                         .then(data => setModifiedData(data))
 
@@ -71,7 +71,7 @@ const DisplayItemCard = ({ singleItem }) => {
 
 
 
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://protected-woodland-78781.herokuapp.com/users/${_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const DisplayItemCard = ({ singleItem }) => {
                 toast("Product Added Successfully!")
                 e.target.reset()
                 if (data.modifiedCount > 0) {
-                    fetch(`http://localhost:5000/users/${_id}`)
+                    fetch(`https://protected-woodland-78781.herokuapp.com/users/${_id}`)
                         .then(res => res.json())
                         .then(data => {
                             setModifiedData(data)
