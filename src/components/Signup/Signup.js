@@ -90,7 +90,7 @@ const Signup = () => {
                             <FormControl className='mt-3' onBlur={(e) => setPass(e.target.value)} type="password" name="password" placeholder="Password" required />
 
 
-                            <input type="submit" value="Sign Up" className="btn btn-primary text-dark w-100 p-2 mt-3" style={{ backgroundColor: "#C7FF32", border: 'none' }}></input>
+                            <input type="submit" value="Sign Up" className="btn btn-primary text-light w-100 p-2 mt-3 border-0" style={{ backgroundColor: "#21C9B6" }}></input>
                         </form>
                         <GoogleSignIn></GoogleSignIn>
                         <p className='mt-2 mx-auto fs-6'>Already Registered? Go to  <Link className='text-success text-decoration-none fw-6' to='/login'>Login Page.</Link></p>

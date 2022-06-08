@@ -8,7 +8,7 @@ import auth from '../../firebase.init';
 
 const PrimaryMenu = () => {
     const [user] = useAuthState(auth);
-    console.log("navbar", user)
+    
 
     const handleSignOut = () => {
         signOut(auth);

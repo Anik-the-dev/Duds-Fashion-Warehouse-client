@@ -1,14 +1,33 @@
-.top-banner{
-    margin: 10% 0 ;
- 
-    
-    
+.top-banner {
+    height: 60vh;
+    background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),url(dudsbanner.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow-x: hidden;
+    position: relative;
+
+
+
 }
 
+@media only screen and (min-width: 592px) {
 
-.flex-btn{
+    .top-banner {
+        height: 80vh;
+
+    }
+    .b-c {
+
+        transform: translateY(50%);
+        
+        width: 50%;
+     }
+  }
+
+
+
+.flex-btn {
     margin-right: 1rem;
     margin-bottom: 1rem;
-    
-}
 
+}

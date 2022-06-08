@@ -3,7 +3,7 @@ import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Card, Col, Container, Form, FormControl, Row } from 'react-bootstrap';
-import login from '../../images/login.jpg'
+import login from '../../images/login.webp'
 import GoogleSignIn from '../GoogleSignIn/GoogleSignIn';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { Toast } from 'react-bootstrap';
@@ -86,7 +86,7 @@ const Login = () => {
                             {/* <input type="submit" value="Login" className="btn btn-primary w-50 p-2 mt-3" style={{ backgroundColor: "#7161F8" }}></input> */}
                             <div className='mt-3 d-flex flex-wrap-reverse align-items-center justify-content-between'>
 
-                                <input type="submit" value="Login" className="btn btn-primary w-50 p-2 " style={{ backgroundColor: "#7161F8" }}></input>
+                                <input type="submit" value="Login" className="btn btn-primary w-50 p-2 border-0 " style={{ backgroundColor: "#21C9B6" }}></input>
                                 <p onClick={handlePasswordReset} className='text-primary pt-3 pe-auto'>Forget Password?</p>
                                 {/* {
                                     reset ?

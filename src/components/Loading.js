@@ -9,4 +9,4 @@ const Loading = () => {
     );
 };
 
-export default Loading;<Spinner animation='border' variant='success'></Spinner>
+export default Loading;
